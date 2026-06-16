@@ -139,8 +139,15 @@ abstract final class PortfolioData {
       id: 'soulup',
       title: 'Soul Up',
       description:
-          'Aplicativo que trabalhei na Vizo, utilizando Bloc/Cubit como '
-          'uma rede social de blockchain.',
+          'Soul Up is a blockchain-powered super app designed to put '
+          'communities back at the center of digital interaction. It unifies '
+          'finance, privacy, decentralized identity, and measurable '
+          'socio-environmental impact in a single platform. The product '
+          'emphasizes user autonomy, allowing people to personalize their '
+          'experience and control how, when, and whether their data is '
+          'shared. During my time at Vizo, I contributed with Flutter and '
+          'Bloc/Cubit to deliver a scalable, community-first social '
+          'experience.',
       technologies: ['Flutter', 'Bloc/Cubit', 'Blockchain', 'Clean Architecture'],
       playStoreUrl: 'https://play.google.com/store/apps/details?id=com.soulprime.app',
       isFeatured: true,
@@ -185,8 +192,15 @@ abstract final class PortfolioData {
       id: 'zira',
       title: 'ZIRA',
       description:
-          'Mobile app delivered during my Vizo period, focused on robust '
-          'feature implementation and production readiness for Android users.',
+          'ZIRA is an advanced safety and community-intelligence app built '
+          'for Israeli users. It provides real-time news, location-based '
+          'security alerts, and interactive incident mapping, while enabling '
+          'crowdsourced reports to improve situational awareness and response '
+          'times. The platform also relays official Home Front Command '
+          'alerts during critical events and uses strong privacy safeguards '
+          'with location anonymization. I worked on high-reliability mobile '
+          'features focused on usability, push notifications, and '
+          'real-time communication.',
       technologies: ['Flutter', 'Clean Architecture', 'BLoC/Cubit', 'Firebase'],
       playStoreUrl: 'https://play.google.com/store/apps/details?id=dev.vizo.zira',
       isFeatured: true,
