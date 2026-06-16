@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.32.x"
+          channel: "stable"
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Resolve base href
+        shell: bash
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          OWNER_NAME="${GITHUB_REPOSITORY%%/*}"
+
+          if [[ "${REPO_NAME}" == "${OWNER_NAME}.github.io" ]]; then
+            echo "BASE_HREF=/" >> "$GITHUB_ENV"
+          else
+            echo "BASE_HREF=/${REPO_NAME}/" >> "$GITHUB_ENV"
+          fi
+
+      - name: Build web
+        run: flutter build web --release --base-href "${{ env.BASE_HREF }}" --no-wasm-dry-run
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+          enable_jekyll: false
