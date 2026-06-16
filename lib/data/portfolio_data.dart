@@ -174,7 +174,7 @@ abstract final class PortfolioData {
           'checkout, Google Maps live driver tracking, and PIX payment '
           'flow with ML Kit driver onboarding.',
       technologies: ['Flutter', 'MVVM', 'WebSocket', 'Google Maps', 'GoRouter', 'GetIt', 'New Relic'],
-      statusTag: 'Não lançado',
+      statusTag: 'Not released yet',
       isFeatured: true,
     ),
     ProjectEntity(
