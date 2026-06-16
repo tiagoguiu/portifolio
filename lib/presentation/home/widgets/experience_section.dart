@@ -69,7 +69,7 @@ class _ExperienceCard extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 32),
               child: Container(
-                padding: const EdgeInsets.all(24),
+                padding: EdgeInsets.fromLTRB(24, 24, 24, experience.company == 'Onebox' ? 32 : 24),
                 decoration: BoxDecoration(
                   color: isDark ? AppColors.darkCard : AppColors.lightSurface,
                   borderRadius: BorderRadius.circular(16),

@@ -132,6 +132,16 @@ abstract final class PortfolioData {
           'connectivity-aware overlay. Users can buy tickets, recharge '
           'cards, and track balance in real time.',
       technologies: ['Flutter', 'Riverpod', 'Clean Architecture', 'Dio', 'Firebase', 'GoRouter'],
+      playStoreUrl: 'https://play.google.com/store/apps/details?id=br.com.simohuapp&pcampaignid=web_share',
+      isFeatured: true,
+    ),
+    ProjectEntity(
+      id: 'soulup',
+      title: 'Soul Up',
+      description:
+          'Aplicativo que trabalhei na Vizo, utilizando Bloc/Cubit como '
+          'uma rede social de blockchain.',
+      technologies: ['Flutter', 'Bloc/Cubit', 'Blockchain', 'Clean Architecture'],
       playStoreUrl: 'https://play.google.com/store/apps/details?id=com.soulprime.app',
       isFeatured: true,
     ),
@@ -157,7 +167,7 @@ abstract final class PortfolioData {
           'checkout, Google Maps live driver tracking, and PIX payment '
           'flow with ML Kit driver onboarding.',
       technologies: ['Flutter', 'MVVM', 'WebSocket', 'Google Maps', 'GoRouter', 'GetIt', 'New Relic'],
-      statusTag: 'Not Released',
+      statusTag: 'Não lançado',
       isFeatured: true,
     ),
     ProjectEntity(
