@@ -59,117 +59,119 @@ class _ExperienceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _TimelineIndicator(isCurrent: experience.isCurrent, isLast: isLast, isDark: isDark),
-          const SizedBox(width: 24),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 32),
-              child: Container(
-                padding: EdgeInsets.fromLTRB(24, 24, 24, experience.company == 'Onebox' ? 32 : 24),
-                decoration: BoxDecoration(
-                  color: isDark ? AppColors.darkCard : AppColors.lightSurface,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.lightBorder),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                experience.role,
-                                style: textTheme.titleLarge?.copyWith(
-                                  color: isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                experience.company,
-                                style: textTheme.titleMedium?.copyWith(
-                                  color: AppColors.primaryLight,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                              decoration: BoxDecoration(
-                                color: experience.isCurrent
-                                    ? AppColors.success.withValues(alpha: 0.15)
-                                    : AppColors.primary.withValues(alpha: 0.1),
-                                borderRadius: BorderRadius.circular(6),
-                                border: Border.all(
-                                  color: experience.isCurrent
-                                      ? AppColors.success.withValues(alpha: 0.4)
-                                      : AppColors.primary.withValues(alpha: 0.3),
-                                ),
-                              ),
-                              child: Text(
-                                experience.period,
-                                style: textTheme.labelSmall?.copyWith(
-                                  color: experience.isCurrent ? AppColors.success : AppColors.primaryLight,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    ...experience.highlights.map(
-                      (highlight) => Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: Row(
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _TimelineIndicator(isCurrent: experience.isCurrent, isLast: isLast, isDark: isDark),
+        const SizedBox(width: 24),
+        Flexible(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 32),
+            child: Container(
+              constraints: const BoxConstraints(minHeight: 0),
+              padding: EdgeInsets.fromLTRB(24, 24, 24, experience.company == 'Onebox' ? 32 : 24),
+              decoration: BoxDecoration(
+                color: isDark ? AppColors.darkCard : AppColors.lightSurface,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.lightBorder),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 7),
-                              child: Container(
-                                width: 5,
-                                height: 5,
-                                decoration: const BoxDecoration(
-                                  gradient: AppColors.brandGradient,
-                                  shape: BoxShape.circle,
-                                ),
+                            Text(
+                              experience.role,
+                              style: textTheme.titleLarge?.copyWith(
+                                color: isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
-                            const SizedBox(width: 10),
-                            Expanded(
-                              child: Text(
-                                highlight,
-                                style: textTheme.bodyMedium?.copyWith(
-                                  color: isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary,
-                                  height: 1.6,
-                                ),
+                            const SizedBox(height: 4),
+                            Text(
+                              experience.company,
+                              style: textTheme.titleMedium?.copyWith(
+                                color: AppColors.primaryLight,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
                         ),
                       ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: experience.isCurrent
+                                  ? AppColors.success.withValues(alpha: 0.15)
+                                  : AppColors.primary.withValues(alpha: 0.1),
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(
+                                color: experience.isCurrent
+                                    ? AppColors.success.withValues(alpha: 0.4)
+                                    : AppColors.primary.withValues(alpha: 0.3),
+                              ),
+                            ),
+                            child: Text(
+                              experience.period,
+                              style: textTheme.labelSmall?.copyWith(
+                                color: experience.isCurrent ? AppColors.success : AppColors.primaryLight,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  ...experience.highlights.map(
+                    (highlight) => Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 7),
+                            child: Container(
+                              width: 5,
+                              height: 5,
+                              decoration: const BoxDecoration(
+                                gradient: AppColors.brandGradient,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Text(
+                              highlight,
+                              softWrap: true,
+                              overflow: TextOverflow.visible,
+                              style: textTheme.bodyMedium?.copyWith(
+                                color: isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary,
+                                height: 1.6,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     ).animate().fadeIn(delay: (index * 100).ms, duration: 500.ms).slideX(begin: -0.05, end: 0);
   }
 }
@@ -186,6 +188,7 @@ class _TimelineIndicator extends StatelessWidget {
     return SizedBox(
       width: 24,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             width: 16,
@@ -201,16 +204,15 @@ class _TimelineIndicator extends StatelessWidget {
             ),
           ),
           if (!isLast)
-            Expanded(
-              child: Container(
-                width: 2,
-                margin: const EdgeInsets.symmetric(vertical: 4),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [AppColors.primary.withValues(alpha: 0.4), AppColors.darkBorder.withValues(alpha: 0.2)],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
+            Container(
+              width: 2,
+              height: 56,
+              margin: const EdgeInsets.symmetric(vertical: 4),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [AppColors.primary.withValues(alpha: 0.4), AppColors.darkBorder.withValues(alpha: 0.2)],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
                 ),
               ),
             ),

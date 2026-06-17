@@ -29,6 +29,8 @@ class _HoverCardState extends State<HoverCard> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           curve: Curves.easeOut,
+          width: double.infinity,
+          clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
             color: isDark ? AppColors.darkCard : AppColors.lightSurface,
             borderRadius: BorderRadius.circular(16),

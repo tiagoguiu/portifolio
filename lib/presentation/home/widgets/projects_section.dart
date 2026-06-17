@@ -123,52 +123,62 @@ class _ProjectCard extends StatelessWidget {
           : project.githubUrl != null
           ? () => launchUrl(Uri.parse(project.githubUrl!))
           : null,
-      child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                _ProjectIcon(project: project, isDark: isDark),
-                const Spacer(),
-                _ProjectLinks(project: project, isDark: isDark),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Text(
-                    project.title,
-                    style: textTheme.titleLarge?.copyWith(
-                      color: isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-                if (project.statusTag != null) ...[
-                  const SizedBox(width: 8),
-                  _ProjectStatusTag(label: project.statusTag!),
+      child: SizedBox(
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  _ProjectIcon(project: project, isDark: isDark),
+                  const Spacer(),
+                  _ProjectLinks(project: project, isDark: isDark),
                 ],
-              ],
-            ),
-            const SizedBox(height: 8),
-            Text(
-              project.description,
-              style: textTheme.bodyMedium?.copyWith(
-                color: isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary,
-                height: 1.6,
               ),
-            ),
-            const SizedBox(height: 16),
-            Wrap(
-              spacing: 6,
-              runSpacing: 6,
-              children: project.technologies.map((tech) => _TechChip(tech: tech, isDark: isDark)).toList(),
-            ),
-          ],
+              const SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                child: Wrap(
+                  alignment: WrapAlignment.spaceBetween,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 320),
+                      child: Text(
+                        project.title,
+                        softWrap: true,
+                        style: textTheme.titleLarge?.copyWith(
+                          color: isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    if (project.statusTag != null) _ProjectStatusTag(label: project.statusTag!),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                project.description,
+                softWrap: true,
+                overflow: TextOverflow.visible,
+                style: textTheme.bodyMedium?.copyWith(
+                  color: isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary,
+                  height: 1.6,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Wrap(
+                spacing: 6,
+                runSpacing: 6,
+                children: project.technologies.map((tech) => _TechChip(tech: tech, isDark: isDark)).toList(),
+              ),
+            ],
+          ),
         ),
       ),
     ).animate().fadeIn(delay: (index * 100).ms, duration: 500.ms).slideY(begin: 0.1, end: 0);
